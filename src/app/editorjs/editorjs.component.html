@@ -1,4 +1,16 @@
 <button (click)="JsonExport()">Export as JSON</button>
 <button (click)="HtmlExport()">Export as HTML</button>
 
-<div class="editor" id="editor-js"></div>
+<div id="editor-js" appApplyCustomStyle [config]="customStyles$ | async"></div>
+
+
+<div class="output">
+  <pre>
+    <code>
+      {{outputData | json}}
+    </code>
+  </pre>
+</div>
+
+<div [innerHTML]="outputHtml" appApplyCustomStyle [config]="customStyles$ | async"></div>
+
